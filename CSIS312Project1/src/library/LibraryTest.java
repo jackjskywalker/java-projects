@@ -1,7 +1,9 @@
-/*
- * CSIS 312 Assignment 1 Test File - supplied by instructor
+/* CSIS312 Assignment 1 Test File - Supplied by instructor
+ * @author Wade
+ * Project Completed by - Ben Turner and Jack Skywalker
  */
-package csis312project1;
+
+package library;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -11,10 +13,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- *
- * @author Wade
- */
 public class LibraryTest 
 {
     /**

@@ -1,16 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package csis312project1;
-
-/**
- *
+/* Media class as part of the Library program
  * @author bent3
+ * @collaborator JSWILD
  */
+
+package library;
+
 public abstract class Media implements MediaUtility {
-    public String title;
-    public String publicationDate;
+    protected String title;
+    protected String publicationDate;
     
     public Media (String title, String publicationDate) {
         this.title = title;
@@ -28,5 +25,6 @@ public abstract class Media implements MediaUtility {
     String getPublicationDate() {
         return publicationDate;
     }
-    
+
+    public abstract double getCost();
 }
