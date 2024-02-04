@@ -6,25 +6,35 @@
 package library;
 
 public abstract class Media implements MediaUtility {
+
+    // Declare protected instance variables
     protected String title;
     protected String publicationDate;
-    
-    public Media (String title, String publicationDate) {
+
+    // Constructor for media class
+    public Media(String title, String publicationDate) {
         this.title = title;
         this.publicationDate = publicationDate;
     }
-    
+
+    public int compareTo() {
+
+    }
+
+    // Access title data
     public String getTitle() {
         return title;
     }
-    
-    int compareTo() {
-        return 0;
-    }
-    
-    String getPublicationDate() {
+
+    // Access publicationDate data
+    public String getPublicationDate() {
         return publicationDate;
     }
 
+    // Declare abstract getCost method
     public abstract double getCost();
+
+    // Declare abstract print method
+    public abstract String print();
+
 }

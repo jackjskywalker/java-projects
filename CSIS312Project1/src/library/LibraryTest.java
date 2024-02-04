@@ -1,6 +1,6 @@
 /* CSIS312 Assignment 1 Test File - Supplied by instructor
- * @author Wade
  * Project Completed by - Ben Turner and Jack Skywalker
+ * @author Wade
  */
 
 package library;
@@ -105,7 +105,6 @@ public class LibraryTest
             MediaUtility mu = m;
             System.out.println(mu.print() + ", Cost: " + mu.getCost());
         }
-
     }
     
 }

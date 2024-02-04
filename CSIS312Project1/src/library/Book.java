@@ -4,32 +4,35 @@
  */
 
 package library;
+
 public class Book extends Media {
 
     // Initialize private instance variables
-    String author;
-    double cost;
+    private final String author;
+    private final double cost;
 
     // Declare a constructor for Book class
     public Book(String title, String publicationDate, String author, double cost) {
-        super(title, publicationDate);
+        super(title, publicationDate); // Get variables from superclass
         this.author = author;
         this.cost = cost;
     }
 
     // Convert Book to specified String format
     public String print() {
-        return String.format("b, %s , %s, %s, %s", title, publicationDate, author, cost);
+        return String.format("Title: %s, Date: %s, Author: %s, Cost: %f",
+                getTitle(), getPublicationDate(), getAuthor(), getCost());
     }
 
     // Access cost value
     @Override
     public double getCost() {
-        return cost;
+        return this.cost;
     }
 
     // Access author data
     public String getAuthor() {
-        return author;
+        return this.author;
     }
+
 }

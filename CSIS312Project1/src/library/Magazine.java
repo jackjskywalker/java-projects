@@ -7,24 +7,28 @@ package library;
 
 public class Magazine extends Media {
 
-    double issueCost;
-    int issuesPerYear;
-    
-    public Magazine(String title, String publicationDate, double issueCost, int issuesPerYear) {
-        
-        super(title, publicationDate);
-        
+    // Initialize private instance variables
+    private final double issueCost;
+    private final int issuesPerYear;
+
+    // Declare a constructor for Magazine class
+    public Magazine(String title, String publicationDate, double issueCost, int issues) {
+        super(title, publicationDate); // Get variables from superclass
         this.issueCost = issueCost;
-        this.issuesPerYear = issuesPerYear;
+        this.issuesPerYear = issues;
     }
 
+    // Convert Magazine to specified String format
     @Override
     public String print() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return String.format("Title: %s Date: %s Issues: %d Cost: %f",
+                getTitle(), getPublicationDate(), this.issuesPerYear, getCost());
     }
 
+    // Access and compute cost data
     @Override
     public double getCost() {
-        return issueCost;
+        return (double)this.issuesPerYear * this.issueCost;
     }
+
 }
