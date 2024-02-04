@@ -70,6 +70,8 @@ public class LibraryTest
     {
         List<Media> libraryItems = new ArrayList<>();
         readMedia(libraryItems);
+        System.out.println("\nCSIS312 Assignment 1 - Library Program");
+        System.out.println("By: Ben Turner & Jack Skywalker (Baijun Jiang)\n");
         System.out.println("\nRead Media\n");
         
         System.out.println("\nTest Interface\n");
