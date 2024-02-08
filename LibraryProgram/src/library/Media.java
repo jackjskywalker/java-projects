@@ -5,7 +5,7 @@
 
 package library;
 
-public abstract class Media implements MediaUtility {
+public abstract class Media implements Comparable<Media>, MediaUtility {
 
     // Declare protected instance variables
     protected String title;
@@ -17,8 +17,8 @@ public abstract class Media implements MediaUtility {
         this.publicationDate = publicationDate;
     }
 
-    public int compareTo() {
-
+    public int compareTo(Media m) {
+        return 0;
     }
 
     // Access title data

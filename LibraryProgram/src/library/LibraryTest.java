@@ -95,11 +95,11 @@ public class LibraryTest
                 Book b = (Book)m;
                 System.out.println(common + ", " + b.getAuthor());
             }            
-        }      
-        
+        }
+
         System.out.println("\nTest Sorting\n");
-        
-        // Library items should sort first by date (earliest to latest) 
+
+        // Library items should sort first by date (earliest to latest)
         // then by title (A-Z)
         Collections.sort(libraryItems);
         for (Media m : libraryItems)

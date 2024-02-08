@@ -19,14 +19,12 @@ public class Magazine extends Media {
     }
 
     // Convert Magazine to specified String format
-    @Override
     public String print() {
-        return String.format("Title: %s Date: %s Issues: %d Cost: %f",
-                getTitle(), getPublicationDate(), this.issuesPerYear, getCost());
+        return String.format("Title: %s Date: %s Issues: %d",
+                getTitle(), getPublicationDate(), this.issuesPerYear);
     }
 
     // Access and compute cost data
-    @Override
     public double getCost() {
         return (double)this.issuesPerYear * this.issueCost;
     }
