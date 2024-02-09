@@ -18,9 +18,19 @@ public abstract class Media implements Comparable<Media>, MediaUtility {
     }
 
     public int compareTo(Media m) {
-        return 0;
-    }
+        int dateComparition = this.getPublicationDate().compareTo(m.getPublicationDate());
+        int titleComparition = this.getTitle().compareTo(m.getTitle());
 
+        if (dateComparition == 0) {
+            if (titleComparition > 0)
+                return 1;
+            else if (titleComparition < 0)
+                return -1;
+            else
+                return 0;
+        }
+        return dateComparition;
+    }
     // Access title data
     public String getTitle() {
         return title;
