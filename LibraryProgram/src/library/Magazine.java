@@ -20,7 +20,7 @@ public class Magazine extends Media {
 
     // Convert Magazine to specified String format
     public String print() {
-        return String.format("Title: %s Date: %s Issues: %d",
+        return String.format("Title: %s, Date: %s, Issues: %d",
                 getTitle(), getPublicationDate(), this.issuesPerYear);
     }
 

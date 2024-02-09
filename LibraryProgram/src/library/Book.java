@@ -20,8 +20,8 @@ public class Book extends Media {
 
     // Convert Book to specified String format
     public String print() {
-        return String.format("Title: %s, Date: %s, Author: %s",
-                getTitle(), getPublicationDate(), getAuthor());
+        return String.format("Title: %s, Author: %s, Date: %s",
+                getTitle(), getAuthor(), getPublicationDate());
     }
 
     // Access cost value
