@@ -17,6 +17,7 @@ public abstract class Media implements Comparable<Media>, MediaUtility {
         this.publicationDate = publicationDate;
     }
 
+    // CompareTo method for sorting by date then title
     public int compareTo(Media m) {
         int dateComparition = this.getPublicationDate().compareTo(m.getPublicationDate());
         int titleComparition = this.getTitle().compareTo(m.getTitle());
@@ -31,6 +32,7 @@ public abstract class Media implements Comparable<Media>, MediaUtility {
         }
         return dateComparition;
     }
+
     // Access title data
     public String getTitle() {
         return title;
