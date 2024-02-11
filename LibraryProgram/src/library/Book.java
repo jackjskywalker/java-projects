@@ -20,7 +20,7 @@ public class Book extends Media {
 
     // Convert Book to specified String format
     public String print() {
-        return String.format("Title: %s, Author: %s, Date: %s",
+        return String.format("Title: %s, Author: %s, Published: %s",
                 getTitle(), getAuthor(), getPublicationDate());
     }
 
