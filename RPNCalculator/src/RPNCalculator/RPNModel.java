@@ -25,6 +25,7 @@ public class RPNModel {
      */
     public boolean enter(int val)
     {
+        stack.push(val);
         return true;
     }
 
