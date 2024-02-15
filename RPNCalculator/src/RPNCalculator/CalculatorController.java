@@ -164,7 +164,8 @@ public class CalculatorController implements Initializable
      */
     @FXML
     void buttonSevenClick(ActionEvent event) {
-
+        currentVal = currentVal + "7";
+        updateDisplay();
     }
 
     /**
@@ -183,7 +184,8 @@ public class CalculatorController implements Initializable
      */
     @FXML
     void buttonThreeClick(ActionEvent event) {
-
+        currentVal = currentVal + "3";
+        updateDisplay();
     }
 
     /**
@@ -202,7 +204,8 @@ public class CalculatorController implements Initializable
      */
     @FXML
     void buttonZeroClick(ActionEvent event) {
-
+        currentVal = currentVal + "0";
+        updateDisplay();
     }
 
     /**
@@ -211,7 +214,11 @@ public class CalculatorController implements Initializable
      */
     @FXML
     void buttonPlusClick(ActionEvent event) {
-
+        checkCursor();
+        if(!rpn.add())
+            displayErrorMessage("ERROR: Insufficient Operands");
+        else
+            updateDisplay();
     }
     
     @FXML
@@ -228,8 +235,12 @@ public class CalculatorController implements Initializable
      * @param event - unused
      */
     @FXML
-    void buttonDivideClick(ActionEvent event) {
-
+    void buttonDivideClick(ActionEvent event) throws Exception {
+        checkCursor();
+        if (!rpn.divide())
+            displayErrorMessage("ERROR: Insufficient Operands");
+        else
+            updateDisplay();
     }
 
     /**
