@@ -47,6 +47,9 @@ public class RPNModel {
      */
     public boolean multiply()
     {
+        if (stack.size() < 2)
+            return false;
+        stack.push( stack.pop() * stack.pop());
         return true;
     }
 
@@ -83,6 +86,9 @@ public class RPNModel {
      */
     public boolean subtract()
     {
+        if (stack.size() < 2)
+            return false;
+        stack.push( stack.pop() - stack.pop());
         return true;
     }
 
