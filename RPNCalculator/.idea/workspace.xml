@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RPNCalculator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/RPN.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RPNCalculator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/RPN.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPN.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RPN/RPNCalculator/CalculatorView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RPN/RPNCalculator/CalculatorView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +264,7 @@
     "jdk.selected.JAVA_MODULE": "21",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/bent3/Documents/GitHub/CSIS312Projects/RPNCalculator/src",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
@@ -307,7 +305,7 @@
     </configuration>
     <configuration name="Calculator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="RPNCalculator.Calculator" />
-      <module name="RPN" />
+      <module name="RPNCalculator" />
       <option name="VM_PARAMETERS" value="--module-path ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
