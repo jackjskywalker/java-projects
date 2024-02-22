@@ -12,10 +12,10 @@
       <TextArea fx:id="txtBoxContent" layoutX="17.0" layoutY="14.0" prefHeight="399.0" prefWidth="606.0" />
       <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="411.0" prefHeight="69.0" prefWidth="606.0" spacing="10.0">
          <children>
-            <Button fx:id="generateButton" mnemonicParsing="false" text="Generate" />
+            <Button fx:id="generateButton" mnemonicParsing="false" onAction="#evtGeneratePdf" text="Generate" />
             <Label text="File Name" />
             <TextField fx:id="txtFileName" promptText="filename" />
-            <Button fx:id="btnClear" mnemonicParsing="false" text="Clear" />
+            <Button fx:id="btnClear" mnemonicParsing="false" onAction="#evtClearButton" text="Clear" />
          </children>
       </HBox>
    </children>
