@@ -64,7 +64,19 @@ public class RPNModel {
     {
         if (stack.size() < 2)
             return false;
-        stack.push( stack.pop() / stack.pop());
+
+        try {
+            int divisor = stack.pop();
+            int dividend = stack.pop();
+            if (divisor == 0) {
+                // If divisor is zero, throw an ArithmeticException
+                throw new ArithmeticException("Division by zero");
+            }
+            stack.push(dividend / divisor);
+        } catch (ArithmeticException e) {
+            // Catch ArithmeticException and re-throw as a general Exception
+            throw new Exception("Error: Division by zero", e);
+        }
         return true;
     }
 
