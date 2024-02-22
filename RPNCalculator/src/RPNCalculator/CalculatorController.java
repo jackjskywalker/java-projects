@@ -159,7 +159,7 @@ public class CalculatorController implements Initializable
     }
 
     /**
-     * Complete the 7 button handler
+     * 7 button handler
      * @param event
      */
     @FXML
@@ -179,7 +179,7 @@ public class CalculatorController implements Initializable
     }
 
     /**
-     * Complete the 3 button handler
+     * 3 button handler
      * @param event - unused
      */
     @FXML
@@ -199,7 +199,7 @@ public class CalculatorController implements Initializable
     }
 
     /**
-     * Complete the zero button
+     * zero button handler
      * @param event
      */
     @FXML

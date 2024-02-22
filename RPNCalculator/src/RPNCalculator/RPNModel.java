@@ -101,7 +101,9 @@ public class RPNModel {
     {
         if (stack.size() < 2)
             return false;
-        stack.push( stack.pop() - stack.pop());
+        int subtractor = stack.pop();
+        int subtracted = stack.pop();
+        stack.push(subtracted - subtractor);
         return true;
     }
 
