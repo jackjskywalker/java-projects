@@ -19,6 +19,14 @@ import com.itextpdf.text.Section;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+/*
+import com.itextpdf.io.image.ImageDate;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Image;
+*/
 
 public class PdfMaker {
     private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
@@ -42,7 +50,20 @@ public class PdfMaker {
     public boolean createPdf(String fileName, String content)
     {
         try {
-
+            try {
+                int i = 1 / fileName.length();
+            }
+            catch (ArithmeticException exception){
+                System.out.println("Error: File name empty");
+                return false;
+            }
+            try {
+                int i2 = 1 / content.length();
+            }
+            catch (ArithmeticException exception){
+                System.out.println("Error: File content empty");
+                return false;
+            }
             fileName = fileName + ".pdf";
             PdfWriter.getInstance(document, new FileOutputStream(fileName));
             document.open();
