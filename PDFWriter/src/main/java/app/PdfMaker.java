@@ -1,3 +1,9 @@
+/*
+* CSIS312 Assignment 3 - PDFMaker
+* By Ben Turner and Jack Skywalker
+* Resources: https://stackoverflow.com/questions/14811618/add-image-to-a-pdf-using-itext
+ */
+
 package app;
 
 import java.io.FileOutputStream;
@@ -8,12 +14,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-/*import com.itextpdf.io.image.ImageDate;
-import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Image;*/
+
 
 public class PdfMaker {
     private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
@@ -86,20 +87,22 @@ public class PdfMaker {
                 smallBold));
         addEmptyLine(preface, 3);
         preface.add(new Paragraph(
-                "This document describes something which is very important ",
+                "A long time ago, in the galaxy far far away...",
                 smallBold));
-
         addEmptyLine(preface, 3);
+
+        //Add image to generated pdf
         Image image1 = null;
         try {
             image1 = Image.getInstance("sample.png");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        //Adjust image alignment
         image1.setAlignment(Element.ALIGN_CENTER);
         image1.scaleAbsolute(450, 250);
-//Add to document
 
+        //Add to document
         addEmptyLine(preface, 3);
         document.add(preface);
         document.add(image1);
