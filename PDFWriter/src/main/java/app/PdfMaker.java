@@ -1,30 +1,19 @@
 package app;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Date;
 
-import com.itextpdf.text.Anchor;
-import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chapter;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.List;
-import com.itextpdf.text.ListItem;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Section;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.io.image.ImageDate;
+/*import com.itextpdf.io.image.ImageDate;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Image;*/
 
 public class PdfMaker {
     private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
@@ -100,9 +89,20 @@ public class PdfMaker {
                 "This document describes something which is very important ",
                 smallBold));
 
-        addEmptyLine(preface, 8);
+        addEmptyLine(preface, 3);
+        Image image1 = null;
+        try {
+            image1 = Image.getInstance("sample.png");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        image1.setAlignment(Element.ALIGN_CENTER);
+        image1.scaleAbsolute(450, 250);
+//Add to document
 
+        addEmptyLine(preface, 3);
         document.add(preface);
+        document.add(image1);
         // Start a new page
         document.newPage();
     }
