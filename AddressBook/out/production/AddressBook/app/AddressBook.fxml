@@ -8,41 +8,50 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox prefHeight="46.0" prefWidth="600.0">
+      <HBox alignment="CENTER" layoutY="14.0" prefHeight="56.0" prefWidth="294.0">
          <children>
             <ImageView fitHeight="56.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
-            <Label prefHeight="18.0" prefWidth="111.0" text="My Address Book" />
+            <Label prefHeight="22.0" prefWidth="221.0" text="My Address Book">
+               <font>
+                  <Font name="Colonna MT" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_RIGHT" layoutX="12.0" layoutY="56.0" prefHeight="40.0" prefWidth="574.0">
+         <children>
+            <TextField prefHeight="26.0" prefWidth="74.0" />
+            <TextField prefHeight="26.0" prefWidth="78.0" />
+            <TextField prefHeight="26.0" prefWidth="81.0" />
+            <TextField prefHeight="26.0" prefWidth="119.0" />
+            <TextField prefHeight="26.0" prefWidth="88.0" />
+            <TextField prefHeight="26.0" prefWidth="50.0" />
+            <TextField prefHeight="26.0" prefWidth="83.0" />
+         </children>
+      </HBox>
+      <TableView layoutX="12.0" layoutY="96.0" prefHeight="296.0" prefWidth="574.0">
+        <columns>
+          <TableColumn prefWidth="72.7999906539917" text="First" />
+          <TableColumn prefWidth="78.4000244140625" text="Last" />
+            <TableColumn prefWidth="80.79998779296875" text="Birthday" />
+            <TableColumn prefWidth="119.19999694824219" text="Address" />
+            <TableColumn prefWidth="87.20001220703125" text="City" />
+            <TableColumn prefWidth="50.39996337890625" text="State" />
+            <TableColumn prefWidth="85.5999755859375" text="Zip" />
+        </columns>
+      </TableView>
+      <HBox alignment="TOP_RIGHT" layoutX="294.0" layoutY="14.0" prefHeight="56.0" prefWidth="294.0">
+         <children>
             <Button mnemonicParsing="false" text="Clear" />
             <Button mnemonicParsing="false" text="Find" />
             <Button mnemonicParsing="false" text="Update" />
             <Button mnemonicParsing="false" text="Delete" textFill="RED" />
          </children>
       </HBox>
-      <HBox layoutY="56.0" prefHeight="40.0" prefWidth="600.0">
-         <children>
-            <TextField prefHeight="26.0" prefWidth="87.0" />
-            <TextField prefHeight="26.0" prefWidth="75.0" />
-            <TextField prefHeight="26.0" prefWidth="66.0" />
-            <TextField prefHeight="26.0" prefWidth="73.0" />
-            <TextField prefHeight="26.0" prefWidth="106.0" />
-            <TextField />
-            <TextField />
-         </children>
-      </HBox>
-      <TableView layoutX="12.0" layoutY="96.0" prefHeight="296.0" prefWidth="574.0">
-        <columns>
-          <TableColumn prefWidth="84.7999906539917" text="First" />
-          <TableColumn prefWidth="65.60003662109375" text="Last" />
-            <TableColumn prefWidth="75.0" text="Birthday" />
-            <TableColumn prefWidth="75.0" text="Address" />
-            <TableColumn prefWidth="75.0" text="City" />
-            <TableColumn prefWidth="75.0" text="State" />
-            <TableColumn prefWidth="75.0" text="Zip" />
-        </columns>
-      </TableView>
    </children>
 </AnchorPane>
