@@ -16,10 +16,10 @@
          <children>
             <ImageView fitHeight="56.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
             <Label prefHeight="18.0" prefWidth="111.0" text="My Address Book" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" text="Clear" />
+            <Button mnemonicParsing="false" text="Find" />
+            <Button mnemonicParsing="false" text="Update" />
+            <Button mnemonicParsing="false" text="Delete" textFill="RED" />
          </children>
       </HBox>
       <HBox layoutY="56.0" prefHeight="40.0" prefWidth="600.0">
