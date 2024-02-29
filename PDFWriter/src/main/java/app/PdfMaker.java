@@ -94,7 +94,7 @@ public class PdfMaker {
         //Add image to generated pdf
         Image image1 = null;
         try {
-            image1 = Image.getInstance("sample.png");
+            image1 = Image.getInstance("Ben&Jack.jpg");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
