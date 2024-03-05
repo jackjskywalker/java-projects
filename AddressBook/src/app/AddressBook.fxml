@@ -58,22 +58,22 @@
             <children>
                 <TextField fx:id="firstNameInputField" prefHeight="26.0" prefWidth="74.0" />
                 <TextField fx:id="lastNameInputField" prefHeight="26.0" prefWidth="78.0" />
-                <TextField fx:id="birthdayInputField" prefHeight="26.0" prefWidth="81.0" />
+                <TextField fx:id="birthdayInputField" prefHeight="26.0" prefWidth="100.0" />
                 <TextField fx:id="addressInputField" prefHeight="26.0" prefWidth="119.0" />
                 <TextField fx:id="cityInputField" prefHeight="26.0" prefWidth="88.0" />
                 <TextField fx:id="stateInputField" prefHeight="26.0" prefWidth="50.0" />
-                <TextField fx:id="zipInputField" prefHeight="26.0" prefWidth="83.0" />
+                <TextField fx:id="zipInputField" prefHeight="26.0" prefWidth="70.0" />
             </children>
         </HBox>
         <TableView fx:id="addressBookTable" layoutX="12.0" layoutY="96.0" prefHeight="296.0" prefWidth="574.0">
             <columns>
                 <TableColumn fx:id="firstNameColumn" prefWidth="72.7999906539917" text="First" />
-                <TableColumn fx:id="lastNameColumn" prefWidth="78.4000244140625" text="Last" />
-                <TableColumn fx:id="birthdayColumn" prefWidth="80.79998779296875" text="Birthday" />
-                <TableColumn fx:id="addressColumn" prefWidth="119.19999694824219" text="Address" />
-                <TableColumn fx:id="cityColumn" prefWidth="87.20001220703125" text="City" />
-                <TableColumn fx:id="stateColumn" prefWidth="50.39996337890625" text="State" />
-                <TableColumn fx:id="zipColumn" prefWidth="85.5999755859375" text="Zip" />
+                <TableColumn fx:id="lastNameColumn" prefWidth="76.5" text="Last" />
+                <TableColumn fx:id="birthdayColumn" prefWidth="99.0" text="Birthday" />
+                <TableColumn fx:id="addressColumn" prefWidth="118.5" text="Address" />
+                <TableColumn fx:id="cityColumn" prefWidth="88.5" text="City" />
+                <TableColumn fx:id="stateColumn" prefWidth="49.5" text="State" />
+                <TableColumn fx:id="zipColumn" prefWidth="68.0" text="Zip" />
             </columns>
         </TableView>
     </children>

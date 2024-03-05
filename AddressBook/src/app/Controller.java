@@ -83,7 +83,13 @@ public class Controller implements Initializable {
 
     @FXML
     void clearEntry(ActionEvent event) {
-
+        firstNameInputField.clear();
+        lastNameInputField.clear();
+        birthdayInputField.clear();
+        addressInputField.clear();
+        cityInputField.clear();
+        stateInputField.clear();
+        zipInputField.clear();
     }
 
     @FXML
