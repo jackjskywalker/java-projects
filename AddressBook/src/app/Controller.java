@@ -1,5 +1,8 @@
+package app;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -8,11 +11,12 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
+    AddressBook AD;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        AddressBook = new AddressBook();
+        AD = new AddressBook();
     }
     @FXML
     private TableView<?> addressBookTable;
@@ -91,6 +95,5 @@ public class Controller {
 
     }
 
-
-
 }
+
