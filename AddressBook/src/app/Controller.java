@@ -1,5 +1,14 @@
+/* CSIS312 - Assignment 4: Address Book Program
+ ** By Ben Turner & Jack Skywalker (Baijun Jiang)
+ ** Resources:
+ ** https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html
+ ** https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.html
+ */
+
 package app;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,31 +25,59 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) { AD = new AddressBook(); }
 
+    // Action Elements
+
+    @FXML
+    void clearEntry(ActionEvent event) {
+        firstNameInputField.clear();
+        lastNameInputField.clear();
+        birthdayInputField.clear();
+        addressInputField.clear();
+        cityInputField.clear();
+        stateInputField.clear();
+        zipInputField.clear();
+    }
+
+    @FXML
+    void deleteEntry(ActionEvent event) {
+
+    }
+
+    @FXML
+    void findEntry(ActionEvent event) {
+
+    }
+
+    @FXML
+    void updateEntry(ActionEvent event) {
+
+    }
+
     // Table Content Elements
 
     @FXML
-    private TableView<?> addressBookTable;
+    private TableView<AddressBook.Contact> addressBookTable;
 
     @FXML
-    private TableColumn<?, ?> firstNameColumn;
+    private TableColumn<AddressBook.Contact, String> firstNameColumn;
 
     @FXML
-    private TableColumn<?, ?> lastNameColumn;
+    private TableColumn<AddressBook.Contact, String> lastNameColumn;
 
     @FXML
-    private TableColumn<?, ?> birthdayColumn;
+    private TableColumn<AddressBook.Contact, String> birthdayColumn;
 
     @FXML
-    private TableColumn<?, ?> addressColumn;
+    private TableColumn<AddressBook.Contact, String> addressColumn;
 
     @FXML
-    private TableColumn<?, ?> cityColumn;
+    private TableColumn<AddressBook.Contact, String> cityColumn;
 
     @FXML
-    private TableColumn<?, ?> stateColumn;
+    private TableColumn<AddressBook.Contact, String> stateColumn;
 
     @FXML
-    private TableColumn<?, ?> zipColumn;
+    private TableColumn<AddressBook.Contact, Integer> zipColumn;
 
     // Entry Input Elements
 
@@ -78,34 +115,6 @@ public class Controller implements Initializable {
 
     @FXML
     private Button deleteButton;
-
-    // Action Elements
-
-    @FXML
-    void clearEntry(ActionEvent event) {
-        firstNameInputField.clear();
-        lastNameInputField.clear();
-        birthdayInputField.clear();
-        addressInputField.clear();
-        cityInputField.clear();
-        stateInputField.clear();
-        zipInputField.clear();
-    }
-
-    @FXML
-    void deleteEntry(ActionEvent event) {
-
-    }
-
-    @FXML
-    void findEntry(ActionEvent event) {
-
-    }
-
-    @FXML
-    void updateEntry(ActionEvent event) {
-
-    }
 
 }
 
