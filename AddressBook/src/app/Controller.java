@@ -7,6 +7,8 @@
 
 package app;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,14 +16,30 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    
+
+    ObservableList<AddressBook> list = FXCollections.observableArrayList(
+            new AddressBook("Ben", "Turner", "02/17/04", "551 Slish Rd", "Honesdale", "PA", 18431),
+            new AddressBook("Ben", "Turner", "02/17/04", "551 Slish Rd", "Honesdale", "PA", 18431),
+            new AddressBook("Ben", "Turner", "02/17/04", "551 Slish Rd", "Honesdale", "PA", 18431)
+    );
     @Override
-    public void initialize(URL url, ResourceBundle rb) {  }
+    public void initialize(URL url, ResourceBundle rb) {
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("firstNameColumn"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("lastNameColumn"));
+        birthdayColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("birthdayColumn"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("addressColumn"));
+        cityColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("cityColumn"));
+        stateColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("stateColumn"));
+        zipColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, Integer>("zipColumn"));
+
+        addressBookTable.setItems(list);
+    }
 
     // Action Elements
 
