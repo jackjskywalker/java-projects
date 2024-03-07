@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     AddressBook AD;
     @Override
-    public void initialize(URL url, ResourceBundle rb) { AD = new AddressBook(); }
+    public void initialize(URL url, ResourceBundle rb) {  }
 
     // Action Elements
 
@@ -54,28 +54,28 @@ public class Controller implements Initializable {
     // Table Content Elements
 
     @FXML
-    private TableView<AddressBook.Contact> addressBookTable;
+    private TableView<AddressBook> addressBookTable;
 
     @FXML
-    private TableColumn<AddressBook.Contact, String> firstNameColumn;
+    private TableColumn<AddressBook, String> firstNameColumn;
 
     @FXML
-    private TableColumn<AddressBook.Contact, String> lastNameColumn;
+    private TableColumn<AddressBook, String> lastNameColumn;
 
     @FXML
-    private TableColumn<AddressBook.Contact, String> birthdayColumn;
+    private TableColumn<AddressBook, String> birthdayColumn;
 
     @FXML
-    private TableColumn<AddressBook.Contact, String> addressColumn;
+    private TableColumn<AddressBook, String> addressColumn;
 
     @FXML
-    private TableColumn<AddressBook.Contact, String> cityColumn;
+    private TableColumn<AddressBook, String> cityColumn;
 
     @FXML
-    private TableColumn<AddressBook.Contact, String> stateColumn;
+    private TableColumn<AddressBook, String> stateColumn;
 
     @FXML
-    private TableColumn<AddressBook.Contact, Integer> zipColumn;
+    private TableColumn<AddressBook, Integer> zipColumn;
 
     // Entry Input Elements
 
