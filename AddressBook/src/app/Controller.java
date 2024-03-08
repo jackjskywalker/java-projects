@@ -30,13 +30,13 @@ public class Controller implements Initializable {
     );
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("firstNameColumn"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("lastNameColumn"));
-        birthdayColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("birthdayColumn"));
-        addressColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("addressColumn"));
-        cityColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("cityColumn"));
-        stateColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("stateColumn"));
-        zipColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, Integer>("zipColumn"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("lastName"));
+        birthdayColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("birthday"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("address"));
+        cityColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("city"));
+        stateColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("state"));
+        zipColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, Integer>("zip"));
 
         addressBookTable.setItems(list);
     }
