@@ -1,6 +1,7 @@
 /* CSIS312 - Assignment 4: Address Book Program
  ** By Ben Turner & Jack Skywalker (Baijun Jiang)
  ** Resources:
+ ** https://www.youtube.com/watch?v=A5fQbsJ-iF8
  ** https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html
  ** https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.html
  */
@@ -66,7 +67,26 @@ public class Controller implements Initializable {
 
     @FXML
     void updateEntry(ActionEvent event) {
+        ObservableList<AddressBook> list = FXCollections.observableArrayList(
+                new AddressBook(firstNameInputField.getText(),
+                                lastNameInputField.getText(),
+                                birthdayInputField.getText(),
+                                addressInputField.getText(),
+                                cityInputField.getText(),
+                                stateInputField.getText(),
+                                Integer.parseInt(zipInputField.getText())
+                )
+        );
 
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("lastName"));
+        birthdayColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("birthday"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("address"));
+        cityColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("city"));
+        stateColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("state"));
+        zipColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, Integer>("zip"));
+
+        addressBookTable.setItems(list);
     }
 
     // Table Content Elements

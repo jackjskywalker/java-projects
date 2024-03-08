@@ -1,6 +1,6 @@
 /* CSIS312 - Assignment 4: Address Book Program
  ** By Ben Turner & Jack Skywalker (Baijun Jiang)
- ** Resources: https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html
+ **
  */
 
 package app;
