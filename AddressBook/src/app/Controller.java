@@ -2,8 +2,10 @@
  ** By Ben Turner & Jack Skywalker (Baijun Jiang)
  ** Resources:
  ** https://www.youtube.com/watch?v=A5fQbsJ-iF8
+ ** https://www.youtube.com/watch?v=qmY0pbFFH_Y
  ** https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html
  ** https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.html
+ ** https://stackoverflow.com/questions/34857007/how-to-delete-row-from-table-column-javafx
  */
 
 package app;
@@ -24,13 +26,17 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    ObservableList<AddressBook> list = FXCollections.observableArrayList(
-            new AddressBook("Ben", "Turner", "02/17/04", "551 Slish Rd", "Honesdale", "PA", 18431),
-            new AddressBook("Ben", "Turner", "02/17/04", "551 Slish Rd", "Honesdale", "PA", 18431),
-            new AddressBook("Ben", "Turner", "02/17/04", "551 Slish Rd", "Honesdale", "PA", 18431)
-    );
+
+    ObservableList<AddressBook>dataModel = null;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        // Implement dataModel as a ObservableArrayList
+        dataModel = FXCollections.observableArrayList();
+        addressBookTable.setItems(dataModel);
+
+        // Link column to AddressBook class
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("lastName"));
         birthdayColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("birthday"));
@@ -39,13 +45,15 @@ public class Controller implements Initializable {
         stateColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("state"));
         zipColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, Integer>("zip"));
 
-        addressBookTable.setItems(list);
+        // Link table data
+        addressBookTable.setItems(dataModel);
     }
 
     // Action Elements
 
     @FXML
     void clearEntry(ActionEvent event) {
+        // Clear all input field data
         firstNameInputField.clear();
         lastNameInputField.clear();
         birthdayInputField.clear();
@@ -57,7 +65,11 @@ public class Controller implements Initializable {
 
     @FXML
     void deleteEntry(ActionEvent event) {
-
+        // Delete selected item from table
+        deleteButton.setOnAction(e -> {
+            AddressBook selectedItem = addressBookTable.getSelectionModel().getSelectedItem();
+            addressBookTable.getItems().remove(selectedItem);
+        });
     }
 
     @FXML
@@ -67,26 +79,15 @@ public class Controller implements Initializable {
 
     @FXML
     void updateEntry(ActionEvent event) {
-        ObservableList<AddressBook> list = FXCollections.observableArrayList(
-                new AddressBook(firstNameInputField.getText(),
-                                lastNameInputField.getText(),
-                                birthdayInputField.getText(),
-                                addressInputField.getText(),
-                                cityInputField.getText(),
-                                stateInputField.getText(),
-                                Integer.parseInt(zipInputField.getText())
-                )
-        );
-
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("firstName"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("lastName"));
-        birthdayColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("birthday"));
-        addressColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("address"));
-        cityColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("city"));
-        stateColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("state"));
-        zipColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, Integer>("zip"));
-
-        addressBookTable.setItems(list);
+        // Add additional row to table
+        AddressBook row = new AddressBook(firstNameInputField.getText(),
+                lastNameInputField.getText(),
+                birthdayInputField.getText(),
+                addressInputField.getText(),
+                cityInputField.getText(),
+                stateInputField.getText(),
+                Integer.parseInt(zipInputField.getText()));
+        dataModel.add(row);
     }
 
     // Table Content Elements
