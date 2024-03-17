@@ -1,6 +1,7 @@
 /* CSIS312 - Assignment 4: Address Book Program
  ** By Ben Turner & Jack Skywalker (Baijun Jiang)
  ** Resources:
+ ** https://www.youtube.com/watch?v=FeTrcNBVWtg
  ** https://www.youtube.com/watch?v=A5fQbsJ-iF8
  ** https://www.youtube.com/watch?v=qmY0pbFFH_Y
  ** https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html
@@ -12,6 +13,8 @@ package app;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,21 +23,18 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-
-    ObservableList<AddressBook>dataModel = null;
+    // Implement ObservableArrayList
+    ObservableList<AddressBook>dataModel = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        // Implement dataModel as a ObservableArrayList
-        dataModel = FXCollections.observableArrayList();
-        addressBookTable.setItems(dataModel);
 
         // Link column to AddressBook class
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<AddressBook, String>("firstName"));
@@ -48,6 +48,7 @@ public class Controller implements Initializable {
         // Link table data
         addressBookTable.setItems(dataModel);
     }
+
 
     // Action Elements
 
@@ -66,15 +67,40 @@ public class Controller implements Initializable {
     @FXML
     void deleteEntry(ActionEvent event) {
         // Delete selected item from table
-        deleteButton.setOnAction(e -> {
-            AddressBook selectedItem = addressBookTable.getSelectionModel().getSelectedItem();
-            addressBookTable.getItems().remove(selectedItem);
-        });
+        addressBookTable.setItems(dataModel);
+        AddressBook selectedItem = addressBookTable.getSelectionModel().getSelectedItem();
+        addressBookTable.getItems().remove(selectedItem);
     }
 
     @FXML
     void findEntry(ActionEvent event) {
+        // Wrap the ObservableList in a FilteredList (initially display all data)
+        FilteredList<AddressBook> filteredData = new FilteredList<>(dataModel, b -> true);
 
+        // Set the filter Predicate whenever the filter changes
+        lastNameInputField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(contact -> {
+                // If filter text is empty, display all persons
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare first name and last name of every person with filter text
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                // Filter matches last name.
+                return contact.getLastName().toLowerCase().indexOf(lowerCaseFilter) != -1;
+            });
+        });
+
+        //Wrap the FilteredList in a SortedList
+        SortedList<AddressBook> sortedData = new SortedList<>(filteredData);
+
+        // Bind the SortedList comparator to the TableView comparator
+        sortedData.comparatorProperty().bind(addressBookTable.comparatorProperty());
+
+        // Add sorted (and filtered) data to the table
+        addressBookTable.setItems(sortedData);
     }
 
     @FXML
@@ -87,6 +113,7 @@ public class Controller implements Initializable {
                 cityInputField.getText(),
                 stateInputField.getText(),
                 Integer.parseInt(zipInputField.getText()));
+        // Append to table
         dataModel.add(row);
     }
 
