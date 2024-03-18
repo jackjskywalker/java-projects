@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 
 import java.io.*;
 import java.nio.file.*;
-
+import java.util.Scanner;
 
 
 public class Controller implements Initializable {
@@ -83,10 +83,27 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void deleteEntry(ActionEvent event) {
+    void deleteEntry(ActionEvent event) throws IOException {
         // Delete selected item from table
         addressBookTable.setItems(dataModel);
         AddressBook selectedItem = addressBookTable.getSelectionModel().getSelectedItem();
+
+        File tempFile = new File("tempFile.txt");
+        BufferedReader reader = new BufferedReader(new FileReader("contacts.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+        String currentLine;
+        while((currentLine = reader.readLine()) != null) {
+            if(currentLine.contains(selectedItem.getFirstName() + " " +
+                    selectedItem.getLastName() + " " +
+                    selectedItem.getBirthday() + " " +
+                    selectedItem.getAddress() + " " +
+                    selectedItem.getCity() + " " +
+                    selectedItem.getState() + " " +
+                    selectedItem.getZip())) continue;
+            writer.write(currentLine);
+        }
+        writer.close();
+        boolean successful = tempFile.renameTo(new File("contacts.txt"));
         addressBookTable.getItems().remove(selectedItem);
     }
 
@@ -161,6 +178,18 @@ public class Controller implements Initializable {
 
         // Add validated entry to the table
         AddressBook row = new AddressBook(firstName, lastName, birthday, address, city, state, zip);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("contacts.txt", true))) {
+            bw.newLine();
+            bw.write(row.getFirstName() + " " +
+                    row.getLastName() + " " +
+                    row.getBirthday() + " " +
+                    row.getAddress() + " " +
+                    row.getCity() + " " +
+                    row.getState() + " " +
+                    row.getZip());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         dataModel.add(row);
 }
 
