@@ -6,7 +6,7 @@ package tenfourproblem;
 
 /**
  *
- * @author student1 and student2
+ * @author Benjamin Turner and Jack Skywalker
  * checklist:
  *  Documentation
  *  Split array of strings into key (Integer) value (String) pairs
@@ -15,12 +15,19 @@ package tenfourproblem;
  *  Cleanly terminate program when user enters "quit"
  *  Respond appropriately if entered key not in map
  */
+
+//Imports
+
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class TenFourProblem {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
         // Commonly used "10 Codes" at your trucking company:
         String[] codes = { "10-1 - Receiving Poorly", 
@@ -78,7 +85,7 @@ public class TenFourProblem {
             "10-84 - My telephone number is _____",
             "10-85 - My address is ­­_____", 
 			"10-86 - War Eagle!",
-            "10-91 - Talk closer to the Mike", 
+            "10-91 - Talk closer to the mic",
             "10-92 - Your transmitter is out of adjustment", 
             "10-93 - Check my frequency on this channel", 
             "10-94 - Please give me a long count", 
@@ -94,11 +101,15 @@ public class TenFourProblem {
         // Note that the key should be an Integer and the value a String.
         
         // Build Map Instance Here
-        // ?
-        
+        Map<Integer, String> map = new HashMap<>();
         for (String code : codes)
         {
             // Split up string to get needed parts building map one entry at a time
+            String subStr = code.substring(3);
+            String[] tempArr = subStr.split(" - ");
+            int key = Integer.parseInt(tempArr[0]);
+            String value = tempArr[1];
+            map.put(key, value);
         }
         
         // Enter While Loop To Prompt For Code To Display Meaning
@@ -111,15 +122,30 @@ public class TenFourProblem {
             System.out.print("Enter Code 10-");
             
             // Read entry
-            
+            Scanner s = new Scanner(System.in);
+            String input = s.next();
+            int inputKey = 0;
             // Check for "quit"
-            
+            if (input.equals("quit")) {
+                System.exit(0);
+            }
             // Convert response to an integer
-            
+            try {
+                inputKey = Integer.parseInt(input);
+            }
+            catch(Exception e){
+            System.out.println("Invalid input");
+            continue;
+        }
             // Check for presence of key in map and output message is not
-            
+            String output = map.get(inputKey);
+            if (output == null) {
+                System.out.println("No meaning for entered code");
+            }
             // Output meaning of entered code:
-
+            else {
+                System.out.printf("Meaning for 10-%d is %s%n", inputKey, output);
+            }
         }
     }    
 }
