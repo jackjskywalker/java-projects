@@ -31,6 +31,26 @@ public class AddressBook {
         this.zip = zip;
     }
 
+    // Validate first name (only alpha letters)
+    public boolean validateFirstName(String firstName) {
+        return firstName.matches("[a-zA-Z]+");
+    }
+
+    // Validate last name (only alpha letters)
+    public boolean validateLastName(String lastName) {
+        return lastName.matches("[a-zA-Z]+");
+    }
+
+    // Validate state (two letter abbreviation)
+    public boolean validateState(String state) {
+        return state.matches("[a-zA-Z]{2}");
+    }
+
+    // Validate ZIP code (five digit integer)
+    public boolean validateZip(int zip) {
+        return String.valueOf(zip).matches("\\d{5}");
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

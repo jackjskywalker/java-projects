@@ -25,12 +25,32 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.Formatter;
 import java.util.ResourceBundle;
+
+import java.io.*;
+import java.nio.file.*;
+
+
 
 public class Controller implements Initializable {
 
+    // Output File
+    ObjectOutputStream output;
+
+    {
+        try {
+            output = new ObjectOutputStream(Files.newOutputStream(Paths.get("contacts.txt")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     // Implement ObservableArrayList
     ObservableList<AddressBook>dataModel = FXCollections.observableArrayList();
+
+    public Controller() throws FileNotFoundException {
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -103,18 +123,47 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void updateEntry(ActionEvent event) {
-        // Add additional row to table
-        AddressBook row = new AddressBook(firstNameInputField.getText(),
-                lastNameInputField.getText(),
-                birthdayInputField.getText(),
-                addressInputField.getText(),
-                cityInputField.getText(),
-                stateInputField.getText(),
-                Integer.parseInt(zipInputField.getText()));
-        // Append to table
+    void updateEntry(ActionEvent event) throws IOException {
+        // Validate input before adding to the table
+        String firstName = firstNameInputField.getText();
+        String lastName = lastNameInputField.getText();
+        String birthday = birthdayInputField.getText();
+        String address = addressInputField.getText();
+        String city = cityInputField.getText();
+        String state = stateInputField.getText();
+        String zipText = zipInputField.getText();
+
+        // Regular expressions for validation
+        String nameRegex = "[a-zA-Z]+";
+        String stateRegex = "[a-zA-Z]{2}";
+        String zipRegex = "\\d{5}";
+
+        if (!firstName.matches(nameRegex)) {
+            System.out.println("Invalid first name format");
+            return; // Stop execution if validation fails
+        }
+
+        if (!lastName.matches(nameRegex)) {
+            System.out.println("Invalid last name format");
+            return; // Stop execution if validation fails
+        }
+
+        if (!state.matches(stateRegex)) {
+            System.out.println("Invalid state format");
+            return; // Stop execution if validation fails
+        }
+
+        if (!zipText.matches(zipRegex)) {
+            System.out.println("Invalid ZIP code format");
+            return; // Stop execution if validation fails
+        }
+
+        int zip = Integer.parseInt(zipText);
+
+        // Add validated entry to the table
+        AddressBook row = new AddressBook(firstName, lastName, birthday, address, city, state, zip);
         dataModel.add(row);
-    }
+}
 
     // Table Content Elements
 
