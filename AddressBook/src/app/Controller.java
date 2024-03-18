@@ -25,7 +25,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.util.Formatter;
 import java.util.ResourceBundle;
 
 import java.io.*;
