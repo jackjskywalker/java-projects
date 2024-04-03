@@ -63,6 +63,11 @@ public class WhereAmI {
 
         // your work goes here
 
+        // found record
+
+
+        // return statement
+        return ZipCode;
     }
 
     /**
@@ -93,11 +98,13 @@ public class WhereAmI {
         while (true) {
             System.out.print("Enter Zip Code (0 to end): ");
             int zipToFind = 0;
+            zipToFind = scan.nextInt();
             // read integer zip code
             if (zipToFind > 0) {
                 ZipCode result = null;
                 try {
                     // call recursive method here
+                    //findZip(zips, )
                     System.out.println("Found: " + zipToFind + " City: " + result.city
                             + " State: " + result.state);
                 } catch (Exception e) {
