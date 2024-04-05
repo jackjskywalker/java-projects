@@ -62,7 +62,8 @@ public class WhereAmI {
         // comments !!!!!!! Will count off on implementation if not present.
 
         // your work goes here
-
+        // check middle record
+        if ()
         // found record
 
 
@@ -104,7 +105,7 @@ public class WhereAmI {
                 ZipCode result = null;
                 try {
                     // call recursive method here
-                    //findZip(zips, )
+                    findZip(zips, 0, 95, zipToFind);
                     System.out.println("Found: " + zipToFind + " City: " + result.city
                             + " State: " + result.state);
                 } catch (Exception e) {
