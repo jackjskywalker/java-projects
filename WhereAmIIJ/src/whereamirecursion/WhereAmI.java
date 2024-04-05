@@ -18,10 +18,7 @@ package whereamirecursion;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.util.Comparator.comparing;
 
@@ -62,13 +59,22 @@ public class WhereAmI {
         // comments !!!!!!! Will count off on implementation if not present.
 
         // your work goes here
-        // check middle record
-        if ()
-        // found record
 
+        // find the middle index
+        int midIndex = lowIndex + (highIndex - lowIndex) / 2;
 
-        // return statement
-        return ZipCode;
+        // check if the middle index is correct
+        if ((zc.get(midIndex)).zip == lookingFor) {
+            return zc.get(midIndex);
+        }
+
+        // call method again searching the bottom half of the list
+        if ((zc.get(midIndex)).zip > lookingFor) {
+            return findZip(zc, lowIndex, midIndex - 1, lookingFor);
+        }
+
+        // call method again searching the top half of the list
+        return findZip(zc, midIndex+1, highIndex, lookingFor);
     }
 
     /**
@@ -76,10 +82,13 @@ public class WhereAmI {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
+        // create zipcode list
         List<ZipCode> zips = new ArrayList<>();
+        //import data file to a list
         String fileName = "src/whereamirecursion/zipdata.txt";
         List<String> rawData = Files.readAllLines(Paths.get(fileName));
 
+        // puts the relevant data into the zipcode list
         for (String line : rawData) {
             String[] tmp = line.split(",");
             String city = tmp[0];
@@ -93,19 +102,20 @@ public class WhereAmI {
         // when you search it. This allows binary search techniques
         
         // Sort the zips list here
-        zips.sort(comparing(ZipCode::getZip));
+        Collections.sort(zips, Comparator.comparingInt(ZipCode::getZip));
 
         Scanner scan = new Scanner(System.in);
         while (true) {
             System.out.print("Enter Zip Code (0 to end): ");
             int zipToFind = 0;
+            int n = zips.size();
             zipToFind = scan.nextInt();
             // read integer zip code
             if (zipToFind > 0) {
                 ZipCode result = null;
                 try {
                     // call recursive method here
-                    findZip(zips, 0, 95, zipToFind);
+                    result = findZip(zips, 0, n-1, zipToFind);
                     System.out.println("Found: " + zipToFind + " City: " + result.city
                             + " State: " + result.state);
                 } catch (Exception e) {
