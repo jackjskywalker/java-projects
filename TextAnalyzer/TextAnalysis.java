@@ -4,6 +4,7 @@ package analyzer;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 /**
  * @author Benjamin Turner and Jack Skywalker
@@ -90,7 +91,7 @@ public class TextAnalysis
      */
     public static String[] getWords(String text)
     {
-        return new String[] {"Fix Me!"}; // TODO: Fix Me!
+        return text.split(" ");
     }
 
     // Add method to count the sentences
