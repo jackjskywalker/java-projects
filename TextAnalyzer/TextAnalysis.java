@@ -91,13 +91,20 @@ public class TextAnalysis
      */
     public static String[] getWords(String text)
     {
+        String[] splitWords;
+        String[] splitPeriods = text.split(".");
+        for (String string : splitPeriods) {
+            text.split(" ");
+        }
         return text.split(" ");
     }
 
     // Add method to count the sentences
     public static int getSentenceCount(String text)
     {
-        return 0;   // TODO: Fix Me!
+        char[] punctuation = {'.', '?', '!'};
+        return countCharacters(text, punctuation);
+        // TODO: Fix Me!
         // might be able to use countCharacters here...
     }
 
@@ -207,7 +214,10 @@ public class TextAnalysis
      */
     public static double getAverageSyllables(String text)
     {
-        return 0.0; // TODO: Fix Me!
+        double numWords = getWordCount(text);
+        double numSyllables = getSyllableCount(text, false);
+        double average = numSyllables/numWords;
+        return Math.round(average * 100.0) / 100.0;
     }
 
     /**

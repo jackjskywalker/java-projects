@@ -54,7 +54,7 @@ public class Analyzer extends Application
         {
             String data = ta.getText();
             int words = TextAnalysis.getWordCount(data);
-            int syllables = TextAnalysis.getSyllableCount(data, false);
+            int syllables = TextAnalysis.getSyllableCount(data, true);
             int sentences = TextAnalysis.getSentenceCount(data);
             String out = "Words: " + words + "\n"
                 + "Syllables: " + syllables + "\n"
