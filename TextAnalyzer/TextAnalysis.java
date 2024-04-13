@@ -91,21 +91,19 @@ public class TextAnalysis
      */
     public static String[] getWords(String text)
     {
-        String[] splitWords;
-        String[] splitPeriods = text.split(".");
-        for (String string : splitPeriods) {
-            text.split(" ");
-        }
-        return text.split(" ");
+        // remove punctuation
+        String noPuncText = text.replaceAll("[.?!,;'():]", "");
+        // return an array of strings with each element being a word in the original string
+        return noPuncText.split(" ");
     }
 
     // Add method to count the sentences
     public static int getSentenceCount(String text)
     {
+        // creates an array defining the different punctuation that ends a sentence
         char[] punctuation = {'.', '?', '!'};
+        // counts the number of times the punctuation appears in the text. Does not consider ... or 1.0
         return countCharacters(text, punctuation);
-        // TODO: Fix Me!
-        // might be able to use countCharacters here...
     }
 
     /**
@@ -203,7 +201,7 @@ public class TextAnalysis
             case 17:
                 return "College graduate";
             default:
-                return "Unknown index";
+                return "Unknown index: " + gfx;
         }
     }
 
@@ -214,9 +212,13 @@ public class TextAnalysis
      */
     public static double getAverageSyllables(String text)
     {
+        // count the number of words
         double numWords = getWordCount(text);
+        // count the number of syllables
         double numSyllables = getSyllableCount(text, false);
+        // divide the total number of syllables by the total number of words
         double average = numSyllables/numWords;
+        // round to two decimals
         return Math.round(average * 100.0) / 100.0;
     }
 
@@ -227,6 +229,7 @@ public class TextAnalysis
      * @param text - text to be analyzed
      * @return - syllable count
      */
+    // this is missing some exceptions. Notably, it counts "file" as one syllable and does not take into account that the letter "y" sometimes behaves like a vowel.
     public static int getSyllableCount(String text, boolean gunning)
     {
         int count = 0;
