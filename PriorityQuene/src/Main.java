@@ -89,7 +89,7 @@ class Main
         // Create a Priority Queue
         // 7.4.5.6
         Node pq = newNode(4, 1);
-        pq =push(pq, 5, 2);
+        pq =push(pq, 5, 4);
         pq =push(pq, 6, 3);
         pq =push(pq, 7, 0);
 
