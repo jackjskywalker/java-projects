@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /**
  * @author Benjamin Turner and Jack Skywalker
  * - I have not discussed the source code in my program with anyone other than my instructor’s approved human sources (i.e. programming partner).
@@ -100,10 +101,20 @@ public class TextAnalysis
     // Add method to count the sentences
     public static int getSentenceCount(String text)
     {
+        // creates a variable to count the number of sentences
+        int numSentences = 0;
         // creates an array defining the different punctuation that ends a sentence
         char[] punctuation = {'.', '?', '!'};
+        // gets the last character of the string
+        String lastChar = text.substring(text.length() - 1);
+        // checks if the last character is not a punctuation and increases the number of sentences accordingly
+        if (!(new String(punctuation).contains(lastChar))) {
+            numSentences++;
+        }
         // counts the number of times the punctuation appears in the text. Does not consider ... or 1.0
-        return countCharacters(text, punctuation);
+        numSentences = numSentences + countCharacters(text, punctuation);
+        // returns sentence count
+        return numSentences;
     }
 
     /**
@@ -201,7 +212,7 @@ public class TextAnalysis
             case 17:
                 return "College graduate";
             default:
-                return "Unknown index: " + gfx;
+                return "Unknown index";
         }
     }
 
